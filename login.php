@@ -46,7 +46,7 @@ if ($conn->connect_error) {
     </div><br><br>
       <div class="container-fluid">
        <footer align="center" class="bg-light py-3 text-center mt-5;">
-        <span class="text-primary"><i class="fas fa-code"></i> inventory</span>
+        <span class="text-primary"><i class="fas fa-toolbox"></i> inventory</span>
        </footer>
      </div>
   </body>     
