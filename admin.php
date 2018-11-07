@@ -67,10 +67,10 @@ echo 'fail';
   <div class="container">
     <div class="m-4 row text-center">
       <div class="col-lg-6   p-5 bg-warning">
-      <button class="mt-2 btn btn-lg" type="button"><a href="total.html" class="nav-link">TOTAL</a></button>
+      <button class="mt-2 btn btn-lg" type="button"><a href="total.php" class="nav-link">TOTAL</a></button>
       </div>
       <div class="col-lg-6 p-5 bg-success ">
-      <button class="mt-2 btn btn-lg"  type="button"><a href="adinuse.html" class="nav-link">INUSE</a></button>
+      <button class="mt-2 btn btn-lg"  type="button"><a href="type.php" class="nav-link">INUSE</a></button>
       </div>
     </div>
       <div class="m-4 row text-center">

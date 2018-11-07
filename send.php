@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
   <body>
-  	<body>
+    <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="#">TOTAL</a>
@@ -34,46 +34,66 @@
     </div>
    </nav>
    <div class="container mt-5">
+
+<form action="send.php" method="post">
+Select type of stream:-
+<select name="type">
+<option>Select type
+<option>1yb
+<option>cse
+<option>ece
+<option>ee
+<option>ce
+<option>me
+
+
+</select><br>
+Enter Name and Quantity to send from stock to user:-
+<input type="text" name="pid" placeholder="enter product name">
+<input type="text" name="stkqty" placeholder="enter product quantity">
+
+<input type="submit" value="Submit">
+<input type="reset" value="Reset">
+</form>
   <table class="table">
   <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row"> <label for="exampleInputPassword1">1</label>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo<form id="myForm" action="//google.de">
-  <input type="number" name="number" step="any" /></form></td>
-    </tr>
-    <tr>
-       <th scope="row"> <label for="exampleInputPassword1">2</label>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat<form id="myForm" action="//google.de">
-  <input type="number" name="number" step="any" /></form></td>
-    </tr>
-    <tr>
-      <th scope="row"> <label for="exampleInputPassword1">3</label>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter<form id="myForm" action="//google.de">
-  <input type="number" name="number" step="any" /></form></td>
-    </tr>
-  </tbody>
+   <?php
+
+$conn=mysqli_connect("localhost","root","");
+$result=mysqli_select_db($conn,'inventory')or die("not selected");
+
+$type=$_REQUEST['type'];
+$pid=$_REQUEST['pid'];
+$stkqty=$_REQUEST['stkqty'];
+
+
+$sql="SELECT * FROM admindb where type='$type'";
+
+$result=mysqli_query($conn,$sql);   
+while($row=mysqli_fetch_array($result))
+{
+  echo "<tr><td>".$row['pid'];
+  echo "<td>".$row['product'];
+  echo "<td>".$row['type'];
+  echo "<td>".$row['total'];
+  echo "<td>".$row['inuse'];
+  echo "<td>".$row['stock'];
+if($pid==$row['pid'] && $row['stock']>0)
+{
+  $stock=$row['stock']-$stkqty;
+  $inuse=$row['inuse']+$stkqty;
+  $total=$stock+$inuse;
+echo $inuse;
+$sql="UPDATE `admindb` SET `inuse`=30,`stock`=30 WHERE pid=45669
+";
+}
+
+}
+
+?> 
+ </tbody>
 </table>
- <div class="row ">
+ <div class="row">
     <button type="button" class="btn btn-dark ml-auto"><a href="" class="nav-link">
       send</a>
     </button>
@@ -83,4 +103,4 @@
         <span class="text-primary"><i class="fas fa-toolbox"></i> inventory</span>
        </footer>
 </body>
- </html>
+</html>
