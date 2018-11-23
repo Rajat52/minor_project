@@ -58,11 +58,6 @@ while($row=mysqli_fetch_array($result))
 
   </tbody>
 </table>
- <div class="row ">
-    <button type="button" class="btn btn-dark ml-auto"><a href="" class="nav-link">
-      send</a>
-    </button>
-    </div>
    <div class="container">
     <footer align="center" class="bg-light py-3 container-fluid mt-5;">
         <span class="text-primary"><i class="fas fa-toolbox"></i> inventory</span>

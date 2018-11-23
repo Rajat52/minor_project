@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CodeTrek</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
@@ -49,7 +48,7 @@ Select type of stream:-
 
 </select><br>
 Enter Name and Quantity to send from stock to user:-
-<input type="text" name="pid" placeholder="enter product name">
+<input type="text" name="prid" placeholder="enter product number">
 <input type="text" name="stkqty" placeholder="enter product quantity">
 
 <input type="submit" value="Submit">
@@ -63,7 +62,7 @@ $conn=mysqli_connect("localhost","root","");
 $result=mysqli_select_db($conn,'inventory')or die("not selected");
 
 $type=$_REQUEST['type'];
-$pid=$_REQUEST['pid'];
+$prid=$_REQUEST['prid'];
 $stkqty=$_REQUEST['stkqty'];
 
 
@@ -78,16 +77,15 @@ while($row=mysqli_fetch_array($result))
   echo "<td>".$row['total'];
   echo "<td>".$row['inuse'];
   echo "<td>".$row['stock'];
-if($pid==$row['pid'] && $row['stock']>0)
+
+if($prid==$row['pid'])
 {
   $stock=$row['stock']-$stkqty;
   $inuse=$row['inuse']+$stkqty;
   $total=$stock+$inuse;
-echo $inuse;
-$sql="UPDATE `admindb` SET `inuse`=30,`stock`=30 WHERE pid=45669
-";
-}
 
+$sql="UPDATE `admindb` SET `inuse`=45 WHERE 1";
+}
 }
 
 ?> 
